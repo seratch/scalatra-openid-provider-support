@@ -36,7 +36,7 @@ class MyServlet extends ScalatraServlet
   with Logging {
 
   protected override lazy val baseUrl = "http://localhost:8080"
-  protected override lazy val endpointPath = "/path"
+  protected override lazy val endpointPath = "/auth"
   protected override lazy val identityPathPrefix = "/user/*"
   protected override lazy val confirmationParameterName = "confirmed"
   protected override lazy val isImmediateModeAllowed = true
@@ -64,7 +64,7 @@ class MyServlet extends ScalatraServlet
     )
   }
 
-  protected override def attributeExchange(identity: String): Seq[AXAttribute] = Seq(
+  protected override def ax(identity: String): Seq[AXAttribute] = Seq(
     AXAttribute("username", "https://www.example.com/opeind/ax/username", "Alice"),
     AXAttribute("gender", "https://www.example.com/opeind/ax/gender", "Female")
   )
