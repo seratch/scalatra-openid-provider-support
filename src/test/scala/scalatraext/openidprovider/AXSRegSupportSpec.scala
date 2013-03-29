@@ -3,7 +3,6 @@ package scalatraext.openidprovider
 import org.scalatest.matchers._
 
 import org.scalatra.test.scalatest.ScalatraFlatSpec
-import com.weiglewilczek.slf4s.Logging
 
 class OPAXSRegServlet extends OPServlet with AXSupport with SRegSupport {
 

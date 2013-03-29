@@ -1,7 +1,6 @@
 package scalatraext.openidprovider
 
 import org.scalatest.matchers._
-import com.weiglewilczek.slf4s.Logging
 import org.scalatra.test.scalatest.ScalatraFlatSpec
 
 class OPSRegServlet extends OPServlet with SRegSupport {

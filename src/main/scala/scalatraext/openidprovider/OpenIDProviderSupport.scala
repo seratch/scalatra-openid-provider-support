@@ -19,8 +19,7 @@ import scala.collection.JavaConverters._
 import scala.collection.mutable
 import org.openid4java.server._
 import org.openid4java.message._
-import org.scalatra.ScalatraKernel
-import com.weiglewilczek.slf4s.Logging
+import org.scalatra.ScalatraBase
 import scala.Option
 
 /**
@@ -28,9 +27,9 @@ import scala.Option
  *
  * @see http://openid.net/specs/openid-authentication-2_0.html
  */
-trait OpenIDProviderSupport {
+trait OpenIDProviderSupport extends Logging {
 
-  this: ScalatraKernel with Logging =>
+  this: ScalatraBase =>
 
   protected lazy val htmlContentType: String = "text/html; charset=utf-8"
 

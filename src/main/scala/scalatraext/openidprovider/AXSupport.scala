@@ -15,10 +15,9 @@
  */
 package scalatraext.openidprovider
 
-import org.scalatra.ScalatraKernel
+import org.scalatra.ScalatraBase
 import org.openid4java.message._
 import org.openid4java.message.ax.FetchResponse
-import com.weiglewilczek.slf4s.Logging
 
 /**
  * Attribute Exchange Support
@@ -27,7 +26,7 @@ import com.weiglewilczek.slf4s.Logging
  */
 trait AXSupport {
 
-  this: ScalatraKernel with OpenIDProviderSupport with Logging =>
+  this: ScalatraBase with OpenIDProviderSupport =>
 
   logger.debug("AXSupport is enabled.")
 

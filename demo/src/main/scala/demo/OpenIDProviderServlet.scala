@@ -4,7 +4,6 @@ import org.scalatra._
 import org.openid4java.message._
 import scalatraext.openidprovider._
 import scalatraext.thymeleaf.ThymeleafSupport
-import com.weiglewilczek.slf4s.Logging
 import inputvalidator._
 
 class OpenIDProviderServlet
@@ -21,7 +20,7 @@ class OpenIDProviderServlet
   protected override lazy val isImmediateModeAllowed = true
 
   get("/user/Alice") {
-    status(200)
+    status = 200
   }
 
   get("/") {

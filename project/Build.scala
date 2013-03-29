@@ -3,11 +3,8 @@ import Keys._
 
 object ScalatraOpenIDProviderBuild extends Build {
 
-  lazy val _scalatraVersion = "2.0.4"
-  lazy val _servletApi = "javax.servlet" %  "servlet-api" % "2.5"
-
-  //lazy val _scalatraVersion = "2.1.0-SNAPSHOT"
-  //lazy val _servletApi = "javax.servlet" % "javax.servlet-api" % "3.0.1"
+  lazy val _scalatraVersion = "2.2.0"
+  lazy val _servletApi = "javax.servlet" %  "javax.servlet-api" % "3.0.1"
 
   lazy val openidProvider = Project(
     id = "main", 
@@ -16,18 +13,16 @@ object ScalatraOpenIDProviderBuild extends Build {
       sbtPlugin := false,
       organization := "com.github.seratch",
       name := "scalatra-openid-provider-support",
-      version := "2.0.0",
-      scalaVersion := "2.9.2",
-      crossScalaVersions := Seq("2.9.2", "2.9.1"),
+      version := "2.2.0",
+      scalaVersion := "2.10.0",
       resolvers += "sonatype releases" at "http://oss.sonatype.org/content/repositories/releases",
       resolvers += "sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
       // for openid4java-nodeps...
       resolvers += "guice-maven" at "http://guice-maven.googlecode.com/svn/trunk",
       libraryDependencies <++= (scalaVersion) { scalaVersion =>
         _scalatraDependencies ++ Seq(
-          "org.openid4java"         %  "openid4java-server" % "[0.9,)",
-          "com.weiglewilczek.slf4s" %  "slf4s_2.9.1"        % "1.0.7",
-          "org.scalatest"           %% "scalatest"          % "1.7.2" % "test"
+          "org.openid4java" %  "openid4java-server" % "[0.9,)",
+          "org.scalatest"   %  "scalatest_2.10.0"   % "1.8"    % "test"
         )
       },
       publishTo <<= version { (v: String) =>
@@ -51,7 +46,7 @@ object ScalatraOpenIDProviderBuild extends Build {
       organization := "com.github.seratch",
       name :=  "scalatra-openid-provider-support-demo",
       version := "0.1.0-SNAPSHOT",
-      scalaVersion := "2.9.2",
+      scalaVersion := "2.10.1",
       resolvers ++= Seq(
         // for openid4java-nodeps...
         "guice-maven" at "http://guice-maven.googlecode.com/svn/trunk",
@@ -60,12 +55,12 @@ object ScalatraOpenIDProviderBuild extends Build {
       ),
       libraryDependencies <++= (scalaVersion) { scalaVersion =>
          _scalatraDependencies ++ _containerDepenedencies ++ Seq(
-          "com.github.seratch" %% "scalatra-thymeleaf-support" % "1.0.0",
-          "com.github.seratch" %% "inputvalidator" % "[0.1,)",
-          "ch.qos.logback" % "logback-classic" % "1.0.2" % "runtime"
+          "com.github.seratch" %% "scalatra-thymeleaf-support" % "2.2.0",
+          "com.github.seratch" %% "inputvalidator" % "[0.2,)",
+          "ch.qos.logback"     % "logback-classic" % "1.0.11" % "runtime"
         )
       },
-      scalacOptions ++= Seq("-deprecation", "-unchecked")
+      scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
     ) ++ _jettyOrbitHack
   ).dependsOn(openidProvider)
 
@@ -76,9 +71,9 @@ object ScalatraOpenIDProviderBuild extends Build {
   )
 
   lazy val _scalatraDependencies = Seq(
-    "org.scalatra"      %  "scalatra_2.9.1" % _scalatraVersion,
-    "org.scalatra"      %  "scalatra-scalatest_2.9.1" % _scalatraVersion % "test",
-    "ch.qos.logback"    %  "logback-classic" % "1.0.2" % "runtime",
+    "org.scalatra"   %% "scalatra"           % _scalatraVersion,
+    "org.scalatra"   %% "scalatra-scalatest" % _scalatraVersion % "test",
+    "ch.qos.logback" %  "logback-classic"    % "1.0.11" % "runtime",
     _servletApi % "provided"
   )
   lazy val _containerDepenedencies = Seq(

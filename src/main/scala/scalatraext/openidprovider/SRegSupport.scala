@@ -15,9 +15,8 @@
  */
 package scalatraext.openidprovider
 
-import org.scalatra.ScalatraKernel
+import org.scalatra.ScalatraBase
 import org.openid4java.message._
-import com.weiglewilczek.slf4s.Logging
 import sreg.SRegResponse
 
 /**
@@ -27,7 +26,7 @@ import sreg.SRegResponse
  */
 trait SRegSupport {
 
-  self: ScalatraKernel with OpenIDProviderSupport with Logging =>
+  self: ScalatraBase with OpenIDProviderSupport =>
 
   logger.debug("SRegSupport is enabled.")
 

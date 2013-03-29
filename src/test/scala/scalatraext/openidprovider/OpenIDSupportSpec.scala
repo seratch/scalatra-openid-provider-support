@@ -5,8 +5,6 @@ import org.scalatest.matchers._
 import org.scalatra.ScalatraServlet
 import org.scalatra.test.scalatest.ScalatraFlatSpec
 
-import com.weiglewilczek.slf4s.Logging
-
 class OPServlet extends ScalatraServlet with OpenIDProviderSupport with Logging {
 
   protected override lazy val baseUrl: String = "http://localhost:8080"
